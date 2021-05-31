@@ -10,17 +10,12 @@ import javax.persistence.Table;
 @Table(name = "diary")
 public class Diary extends Application{
 	
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="application_id")
-	private Application application;
-	
 	public Diary() {
 		super();
 	}
 	
-	public Diary(String name, Application application) {
+	public Diary(String name) {
 		super(name);
-		this.application = application;
 	}
 
 }

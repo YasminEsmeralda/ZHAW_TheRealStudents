@@ -13,6 +13,10 @@ public class Customer extends User {
 	private String goal;
 	private String insurance;
 	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="application_id")
+	private Application application;
+	
 	public Customer() {
 		super();
 	}
@@ -21,6 +25,13 @@ public class Customer extends User {
 		super(name, age, gender);
 		this.goal = goal;
 		this.insurance = insurance;
+	}
+
+	public Customer(String name, int age, String gender, String goal, String insurance, Application application) {
+		super(name, age, gender);
+		this.goal = goal;
+		this.insurance = insurance;
+		this.application = application;
 	}
 
 	public String getGoal() {
@@ -37,6 +48,14 @@ public class Customer extends User {
 
 	public void setInsurance(String insurance) {
 		this.insurance = insurance;
+	}
+
+	public Application getApplication() {
+		return this.application;
+	}
+
+	public void setApplication(Application application) {
+		this.application = application;
 	}
 
 }
