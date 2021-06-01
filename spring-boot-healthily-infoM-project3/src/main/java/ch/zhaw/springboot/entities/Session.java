@@ -27,11 +27,10 @@ public class Session {
 	public Session() {
 	}
 	
-	public Session(String topic, String duration, LiveSession liveSession) {
+	public Session(String topic, String duration) {
 		super();
 		this.topic = topic;
 		this.duration = duration;
-		this.liveSession = liveSession;
 	}
 
 	public String getTopic() {

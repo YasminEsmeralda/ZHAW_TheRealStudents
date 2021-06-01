@@ -14,36 +14,24 @@ import javax.persistence.Table;
 @Table(name = "liveSession")
 public class LiveSession extends Application{
 	
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="application_id")
-	private Application application;
-	
     @ManyToMany(targetEntity=Coach.class)  
-    private List<Coach> coachs = new ArrayList<Coach>(); 
+    private List<Coach> coaches = new ArrayList<Coach>(); 
+    
 	
 	public LiveSession() {
 		super();
 	}
 
-	public LiveSession(String name, Application application, List<Coach> coachs) {
+	public LiveSession(String name, List<Coach> coaches) {
 		super(name);
-		this.application = application;
-		this.coachs = coachs;
-	}
-
-	public Application getApplication() {
-		return this.application;
-	}
-
-	public void setApplication(Application application) {
-		this.application = application;
+		this.coaches = coaches;
 	}
 
 	public List<Coach> getCoach() {
-		return this.coachs;
+		return this.coaches;
 	}
 
-	public void setCoach(List<Coach> coachs) {
-		this.coachs = coachs;
+	public void setCoach(List<Coach> coaches) {
+		this.coaches = coaches;
 	}
 }
