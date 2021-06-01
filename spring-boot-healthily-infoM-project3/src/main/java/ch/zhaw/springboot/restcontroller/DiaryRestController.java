@@ -9,23 +9,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import ch.zhaw.springboot.entities.Entry;
-import ch.zhaw.springboot.repositories.EntryRepository;
+import ch.zhaw.springboot.entities.Diary;
+import ch.zhaw.springboot.repositories.DiaryRepository;
 
 @RestController
-public class EntryRestController {
+public class DiaryRestController {
 	
 	@Autowired
-	private EntryRepository repository;
+	private DiaryRepository repository;
 
-	@RequestMapping(value = "healthily/diaries/entries", method = RequestMethod.GET)
-	public ResponseEntity<List<Entry>> getAllEntries() {
-		List<Entry> result = this.repository.findAll();
+	@RequestMapping(value = "healthily/diaries", method = RequestMethod.GET)
+	public ResponseEntity<List<Diary>> getAllDiaries() {
+		List<Diary> result = this.repository.findAll();
 
 		if (!result.isEmpty()) {
-			return new ResponseEntity<List<Entry>>(result, HttpStatus.OK);
+			return new ResponseEntity<List<Diary>>(result, HttpStatus.OK);
 		} else {
-			return new ResponseEntity<List<Entry>>(HttpStatus.NOT_FOUND);
+			return new ResponseEntity<List<Diary>>(HttpStatus.NOT_FOUND);
 		}
 	}
 }

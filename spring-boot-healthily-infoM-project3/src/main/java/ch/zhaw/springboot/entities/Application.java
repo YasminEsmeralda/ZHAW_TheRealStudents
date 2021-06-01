@@ -11,8 +11,7 @@ import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-@Entity(name = "Application")
-@Table(name = "application")
+@MappedSuperclass
 public class Application {
 	
 	@Id

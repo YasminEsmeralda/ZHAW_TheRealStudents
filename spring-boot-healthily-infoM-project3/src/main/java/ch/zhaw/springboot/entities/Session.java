@@ -27,10 +27,11 @@ public class Session {
 	public Session() {
 	}
 	
-	public Session(String topic, String duration) {
+	public Session(String topic, String duration, LiveSession liveSession) {
 		super();
 		this.topic = topic;
 		this.duration = duration;
+		this.liveSession = liveSession;
 	}
 
 	public long getId() {
@@ -51,13 +52,5 @@ public class Session {
 
 	public void setDuration(String duration) {
 		this.duration = duration;
-	}
-
-	public LiveSession getLiveSession() {
-		return this.liveSession;
-	}
-	
-	public void setLiveSession(LiveSession liveSession) {
-		this.liveSession = liveSession;
 	}
 }

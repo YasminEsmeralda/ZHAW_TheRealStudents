@@ -9,23 +9,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import ch.zhaw.springboot.entities.Entry;
-import ch.zhaw.springboot.repositories.EntryRepository;
+import ch.zhaw.springboot.entities.Coach;
+import ch.zhaw.springboot.repositories.CoachRepository;
 
 @RestController
-public class EntryRestController {
+public class CoachRestController {
 	
 	@Autowired
-	private EntryRepository repository;
+	private CoachRepository repository;
 
-	@RequestMapping(value = "healthily/diaries/entries", method = RequestMethod.GET)
-	public ResponseEntity<List<Entry>> getAllEntries() {
-		List<Entry> result = this.repository.findAll();
+	@RequestMapping(value = "healthily/coaches", method = RequestMethod.GET)
+	public ResponseEntity<List<Coach>> getCoaches() {
+		List<Coach> result = this.repository.findAll();
 
 		if (!result.isEmpty()) {
-			return new ResponseEntity<List<Entry>>(result, HttpStatus.OK);
+			return new ResponseEntity<List<Coach>>(result, HttpStatus.OK);
 		} else {
-			return new ResponseEntity<List<Entry>>(HttpStatus.NOT_FOUND);
+			return new ResponseEntity<List<Coach>>(HttpStatus.NOT_FOUND);
 		}
 	}
 }

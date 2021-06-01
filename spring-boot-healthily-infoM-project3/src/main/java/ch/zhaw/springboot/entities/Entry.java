@@ -59,11 +59,4 @@ public class Entry {
 		this.progress = progress;
 	}
 
-	public Diary getDiary() {
-		return this.diary;
-	}
-
-	public void setDiary(Diary diary) {
-		this.diary = diary;
-	}
 }
