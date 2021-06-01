@@ -28,6 +28,10 @@ public class Application {
 		this.name = name;;
 	}
 
+	public long getId() {
+		return this.id;
+	}
+
 	public String getName() {
 		return this.name;
 	}
