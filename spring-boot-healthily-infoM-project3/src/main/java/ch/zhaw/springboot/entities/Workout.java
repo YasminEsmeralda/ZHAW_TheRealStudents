@@ -14,7 +14,7 @@ public class Workout extends Application{
 		super();
 	}
 
-	public Workout(String name) {
-		super(name);
+	public Workout(String name, String sponsor) {
+		super(name, sponsor);
 	}
 }

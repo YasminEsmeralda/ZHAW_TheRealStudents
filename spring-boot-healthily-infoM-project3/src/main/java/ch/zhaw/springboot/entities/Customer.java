@@ -14,7 +14,7 @@ public class Customer extends User {
 	private String insurance;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="application_id")
+	@JoinColumn(name="fk_application_id")
 	private Application application;
 	
 	public Customer() {

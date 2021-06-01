@@ -21,7 +21,7 @@ public class Session {
 	private String duration;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="liveSession_id")
+	@JoinColumn(name="fk_liveSession_id")
 	private LiveSession liveSession;
 
 	public Session() {

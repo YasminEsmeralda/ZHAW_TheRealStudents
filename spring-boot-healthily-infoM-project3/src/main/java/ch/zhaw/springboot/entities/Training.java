@@ -21,7 +21,7 @@ public class Training {
 	private int level;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="workout_id")
+	@JoinColumn(name="fk_workout_id")
 	private Workout workout;
 	
 	public Training() {

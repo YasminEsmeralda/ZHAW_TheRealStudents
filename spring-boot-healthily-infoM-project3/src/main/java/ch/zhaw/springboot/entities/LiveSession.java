@@ -22,9 +22,8 @@ public class LiveSession extends Application{
 		this.coaches = new ArrayList<Coach>(); 
 	}
 
-	public LiveSession(String name, List<Coach> coaches) {
-		super(name);
-		this.coaches = coaches;
+	public LiveSession(String name, String sponsor) {
+		super(name, sponsor);
 		this.coaches = new ArrayList<Coach>(); 
 	}
 

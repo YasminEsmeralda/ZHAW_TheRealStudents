@@ -14,8 +14,8 @@ public class Diary extends Application{
 		super();
 	}
 	
-	public Diary(String name) {
-		super(name);
+	public Diary(String name, String sponsor) {
+		super(name, sponsor);
 	}
 
 }
