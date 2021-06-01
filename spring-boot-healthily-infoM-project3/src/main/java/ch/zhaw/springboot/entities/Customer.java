@@ -1,30 +1,48 @@
 package ch.zhaw.springboot.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity(name = "Customer")
 @Table(name = "customer")
 public class Customer extends User {
-	
+
 	private String goal;
 	private String insurance;
-	
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="application_id")
-	private Application application;
-	
+
+	@OneToMany(fetch = FetchType.LAZY)
+	@JoinColumn(name = "fk_customer_id")
+	private List<LiveSession> liveSessions;
+
+	@OneToMany(fetch = FetchType.LAZY)
+	@JoinColumn(name = "fk_customer_id")
+	private List<Diary> diaries;
+
+	@OneToMany(fetch = FetchType.LAZY)
+	@JoinColumn(name = "fk_customer_id")
+	private List<Workout> workouts;
+
 	public Customer() {
 		super();
+		this.liveSessions = new ArrayList<LiveSession>();
+		this.diaries = new ArrayList<Diary>();
+		this.workouts = new ArrayList<Workout>();
 	}
 
 	public Customer(String name, int age, String gender, String goal, String insurance) {
 		super(name, age, gender);
 		this.goal = goal;
 		this.insurance = insurance;
+		this.liveSessions = new ArrayList<LiveSession>();
+		this.diaries = new ArrayList<Diary>();
+		this.workouts = new ArrayList<Workout>();
 	}
 
 	public String getGoal() {
@@ -43,12 +61,16 @@ public class Customer extends User {
 		this.insurance = insurance;
 	}
 
-	public Application getApplication() {
-		return this.application;
+	public List<LiveSession> getLiveSessions() {
+		return this.liveSessions;
 	}
 
-	public void setApplication(Application application) {
-		this.application = application;
+	public List<Diary> getDiaries() {
+		return this.diaries;
+	}
+
+	public List<Workout> getWorkouts() {
+		return this.workouts;
 	}
 
 }

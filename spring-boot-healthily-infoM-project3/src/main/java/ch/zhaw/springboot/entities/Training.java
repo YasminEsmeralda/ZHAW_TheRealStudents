@@ -18,18 +18,20 @@ public class Training {
 	private long id;
 	
 	private String duration;
+	private String category;
 	private int level;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="workout_id")
+	@JoinColumn(name="fk_workout_id")
 	private Workout workout;
 	
 	public Training() {
 	}
 
-	public Training(String duration, int level, Workout workout) {
+	public Training(String duration, int level, String category, Workout workout) {
 		this.duration = duration;
 		this.level = level;
+		this.category = category;
 		this.workout = workout;
 	}
 
@@ -45,20 +47,20 @@ public class Training {
 		this.duration = duration;
 	}
 
+	public String getCategory() {
+		return this.category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
 	public int getLevel() {
 		return this.level;
 	}
 
 	public void setLevel(int level) {
 		this.level = level;
-	}
-
-	public Workout getWorkout() {
-		return this.workout;
-	}
-
-	public void setWorkout(Workout workout) {
-		this.workout = workout;
 	}
 
 }

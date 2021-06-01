@@ -18,8 +18,8 @@ public class TrainingRestController {
 	@Autowired
 	private TrainingRepository repository;
 
-	@RequestMapping(value = "healthily/trainings", method = RequestMethod.GET)
-	public ResponseEntity<List<Training>> getUsers() {
+	@RequestMapping(value = "healthily/workouts/trainings", method = RequestMethod.GET)
+	public ResponseEntity<List<Training>> getAllTrainings() {
 		List<Training> result = this.repository.findAll();
 
 		if (!result.isEmpty()) {

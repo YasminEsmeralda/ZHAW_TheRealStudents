@@ -7,11 +7,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-@Entity(name = "Application")
-@Table(name = "application")
+@MappedSuperclass
 public class Application {
 	
 	@Id
@@ -24,8 +24,9 @@ public class Application {
 	public Application() {
 	}
 
-	public Application(String name) {
-		this.name = name;;
+	public Application(String name, String sponsor) {
+		this.name = name;
+		this.sponsor = sponsor;
 	}
 
 	public long getId() {

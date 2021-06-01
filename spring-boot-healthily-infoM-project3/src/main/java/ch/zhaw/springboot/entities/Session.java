@@ -21,16 +21,17 @@ public class Session {
 	private String duration;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="liveSession_id")
+	@JoinColumn(name="fk_liveSession_id")
 	private LiveSession liveSession;
 
 	public Session() {
 	}
 	
-	public Session(String topic, String duration) {
+	public Session(String topic, String duration, LiveSession liveSession) {
 		super();
 		this.topic = topic;
 		this.duration = duration;
+		this.liveSession = liveSession;
 	}
 
 	public long getId() {
@@ -51,13 +52,5 @@ public class Session {
 
 	public void setDuration(String duration) {
 		this.duration = duration;
-	}
-
-	public LiveSession getLiveSession() {
-		return this.liveSession;
-	}
-	
-	public void setLiveSession(LiveSession liveSession) {
-		this.liveSession = liveSession;
 	}
 }

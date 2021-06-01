@@ -18,8 +18,8 @@ public class SessionRestController {
 	@Autowired
 	private SessionRepository repository;
 
-	@RequestMapping(value = "healthily/sessions", method = RequestMethod.GET)
-	public ResponseEntity<List<Session>> getUsers() {
+	@RequestMapping(value = "healthily/liveSessions/sessions", method = RequestMethod.GET)
+	public ResponseEntity<List<Session>> getAllSessions() {
 		List<Session> result = this.repository.findAll();
 
 		if (!result.isEmpty()) {
@@ -28,5 +28,4 @@ public class SessionRestController {
 			return new ResponseEntity<List<Session>>(HttpStatus.NOT_FOUND);
 		}
 	}
-
 }
