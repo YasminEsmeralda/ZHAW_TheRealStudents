@@ -33,6 +33,10 @@ public class Training {
 		this.workout = workout;
 	}
 
+	public long getId() {
+		return this.id;
+	}
+
 	public String getDuration() {
 		return this.duration;
 	}

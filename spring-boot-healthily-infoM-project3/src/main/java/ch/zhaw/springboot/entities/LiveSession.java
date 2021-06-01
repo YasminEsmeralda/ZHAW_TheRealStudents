@@ -15,16 +15,17 @@ import javax.persistence.Table;
 public class LiveSession extends Application{
 	
     @ManyToMany(targetEntity=Coach.class)  
-    private List<Coach> coaches = new ArrayList<Coach>(); 
-    
+    private List<Coach> coaches;
 	
 	public LiveSession() {
 		super();
+		this.coaches = new ArrayList<Coach>(); 
 	}
 
 	public LiveSession(String name, List<Coach> coaches) {
 		super(name);
 		this.coaches = coaches;
+		this.coaches = new ArrayList<Coach>(); 
 	}
 
 	public List<Coach> getCoach() {

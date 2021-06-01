@@ -27,13 +27,6 @@ public class Customer extends User {
 		this.insurance = insurance;
 	}
 
-	public Customer(String name, int age, String gender, String goal, String insurance, Application application) {
-		super(name, age, gender);
-		this.goal = goal;
-		this.insurance = insurance;
-		this.application = application;
-	}
-
 	public String getGoal() {
 		return this.goal;
 	}

@@ -14,18 +14,14 @@ public class Coach extends User{
 	private String subjectArea;
 	private int experience;
 	
-    @ManyToMany(targetEntity=LiveSession.class)  
-    private List<LiveSession> liveSessions = new ArrayList<LiveSession>();  
-	
 	public Coach() {
 		super();
 	}
 	
-	public Coach(String name, int age, String gender, String subjectArea, int experience, List<LiveSession> liveSessions) {
+	public Coach(String name, int age, String gender, String subjectArea, int experience) {
 		super(name, age, gender);
 		this.subjectArea = subjectArea;
 		this.experience = experience;
-		this.liveSessions = liveSessions;
 	}
 
 	public String getSubjectArea() {
@@ -44,11 +40,4 @@ public class Coach extends User{
 		this.experience = experience;
 	}
 
-	public List<LiveSession> getLiveSession() {
-		return this.liveSessions;
-	}
-
-	public void setLiveSession(List<LiveSession> liveSessions) {
-		this.liveSessions = liveSessions;
-	}
 }

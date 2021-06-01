@@ -33,6 +33,10 @@ public class Session {
 		this.duration = duration;
 	}
 
+	public long getId() {
+		return this.id;
+	}
+
 	public String getTopic() {
 		return this.topic;
 	}
