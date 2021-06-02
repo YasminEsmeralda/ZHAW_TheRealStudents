@@ -3,6 +3,7 @@ package ch.zhaw.springboot.entities;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
@@ -18,7 +19,7 @@ public class Workout extends Application{
 	@JoinColumn(name = "fk_customer_id")
     private Customer customer;
     
-	@OneToMany(fetch = FetchType.LAZY)
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
 	@JoinColumn(name = "fk_workout_id")
 	private List<Training> trainings;
 	
