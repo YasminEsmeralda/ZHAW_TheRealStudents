@@ -38,7 +38,7 @@ public class CustomerRestController {
 		}
 	}
 	
-	@RequestMapping(value = "healthily/customers/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "healthily/customers/customer={id}", method = RequestMethod.GET)
 	public ResponseEntity<Customer> getPersonById(@PathVariable("id")long id) {
 		Optional<Customer> result = this.repository.findById(id);
 		
@@ -49,7 +49,7 @@ public class CustomerRestController {
 		return new ResponseEntity<Customer>(result.get(), HttpStatus.NOT_FOUND);
 	}
 	
-	@RequestMapping(value = "healthily/customer/customer={id}/workouts/trainings/level={level}", method = RequestMethod.GET)
+	@RequestMapping(value = "healthily/customers/customer={id}/workouts/trainings/level={level}", method = RequestMethod.GET)
 	public ResponseEntity<List<Training>> getTrainingsByCustomerLevel(@PathVariable("id") long id, @PathVariable("level") int level){		
 		List<Training> result = this.trainingRepository.getTrainingsByCustomerLevel(id, level);
 		
