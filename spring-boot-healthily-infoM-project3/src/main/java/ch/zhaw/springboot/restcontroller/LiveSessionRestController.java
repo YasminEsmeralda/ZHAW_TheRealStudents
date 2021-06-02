@@ -24,14 +24,13 @@ public class LiveSessionRestController {
 	public ResponseEntity<List<LiveSession>> getAllLiveSessions() {
 		List<LiveSession> result = this.repository.findAll();
 
-		if (!result.isEmpty()) {
-			return new ResponseEntity<List<LiveSession>>(result, HttpStatus.OK);
-		} else {
+		if (result.isEmpty()) {
 			return new ResponseEntity<List<LiveSession>>(HttpStatus.NOT_FOUND);
 		}
+		
+		return new ResponseEntity<List<LiveSession>>(result, HttpStatus.OK);
 	}
 	
-
 	@RequestMapping(value = "healthily/liveSessions/delete={id}", method = RequestMethod.DELETE)
 	public ResponseEntity<?> deleteLiveSessionById(@PathVariable("id") long id, RedirectAttributes redirAttrs) {
 		boolean exists = repository.existsById(id);

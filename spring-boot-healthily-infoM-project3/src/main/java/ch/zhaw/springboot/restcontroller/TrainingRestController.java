@@ -24,21 +24,36 @@ public class TrainingRestController {
 	public ResponseEntity<List<Training>> getAllTrainings() {
 		List<Training> result = this.repository.findAll();
 
-		if (!result.isEmpty()) {
-			return new ResponseEntity<List<Training>>(result, HttpStatus.OK);
-		} else {
+		if (result.isEmpty()) {
 			return new ResponseEntity<List<Training>>(HttpStatus.NOT_FOUND);
 		}
+
+		return new ResponseEntity<List<Training>>(result, HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "healthily/trainings/level={level}", method = RequestMethod.GET)
 	public ResponseEntity<List<Training>> getTrainingsByLevel(@PathVariable("level") int level) {
 		List<Training> result = this.repository.getTrainingsByLevel(level);
 
-		if (!result.isEmpty()) {
-			return new ResponseEntity<List<Training>>(result, HttpStatus.OK);
-		} else {
+		if (result.isEmpty()) {
 			return new ResponseEntity<List<Training>>(HttpStatus.NOT_FOUND);
+		}
+
+		return new ResponseEntity<List<Training>>(result, HttpStatus.OK);
+
+	}
+
+	@RequestMapping(value = "healthily/trainings/category-like={category}", method = RequestMethod.GET)
+	public ResponseEntity<String> countByCategory(@PathVariable("category") String category) {
+		int ctrCategory = this.repository.countByCategory(category);
+		String result;
+
+		if (ctrCategory < 1) {
+			result = " for Trainings like: \"" + category + "\" nothing found";
+			return new ResponseEntity<String>(result, HttpStatus.NOT_FOUND);
+		} else {
+			result = "Trainings like: \"" + category + "\" found: " + ctrCategory;
+			return new ResponseEntity<String>(result, HttpStatus.OK);
 		}
 	}
 

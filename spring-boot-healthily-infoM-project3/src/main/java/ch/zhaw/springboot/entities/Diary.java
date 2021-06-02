@@ -30,9 +30,10 @@ public class Diary extends Application{
 		this.entries = new ArrayList<Entry>();
 	}
 	
-	public Diary(String name, String sponsor, String category) {
+	public Diary(String name, String sponsor, String category, Customer customer) {
 		super(name, sponsor);
 		this.category = category;
+		this.customer = customer;
 		this.entries = new ArrayList<Entry>();
 	}
 

@@ -22,10 +22,10 @@ public class WorkoutRestController {
 	public ResponseEntity<List<Workout>> getAllWorkouts() {
 		List<Workout> result = this.repository.findAll();
 
-		if (!result.isEmpty()) {
-			return new ResponseEntity<List<Workout>>(result, HttpStatus.OK);
-		} else {
+		if (result.isEmpty()) {
 			return new ResponseEntity<List<Workout>>(HttpStatus.NOT_FOUND);
 		}
+		
+		return new ResponseEntity<List<Workout>>(result, HttpStatus.OK);
 	}
 }

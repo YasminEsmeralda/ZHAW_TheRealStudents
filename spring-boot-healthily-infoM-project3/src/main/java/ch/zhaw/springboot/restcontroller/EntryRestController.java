@@ -23,32 +23,32 @@ public class EntryRestController {
 	public ResponseEntity<List<Entry>> getAllEntries() {
 		List<Entry> result = this.repository.findAll();
 
-		if (!result.isEmpty()) {
-			return new ResponseEntity<List<Entry>>(result, HttpStatus.OK);
-		} else {
+		if (result.isEmpty()) {
 			return new ResponseEntity<List<Entry>>(HttpStatus.NOT_FOUND);
 		}
+		
+		return new ResponseEntity<List<Entry>>(result, HttpStatus.OK);
 	}
 	
 	@RequestMapping(value = "healthily/entries/progress={progress}", method = RequestMethod.GET)
 	public ResponseEntity<List<Entry>> getEntryByProgress(@PathVariable("progress") int progress) {
 		List<Entry> result = this.repository.getEntryByProgress(progress);
 
-		if (!result.isEmpty()) {
-			return new ResponseEntity<List<Entry>>(result, HttpStatus.OK);
-		} else {
+		if (result.isEmpty()) {
 			return new ResponseEntity<List<Entry>>(HttpStatus.NOT_FOUND);
 		}
+		
+		return new ResponseEntity<List<Entry>>(result, HttpStatus.OK);
 	}
 	
 	@RequestMapping(value = "healthily/entries/year={year}", method = RequestMethod.GET)
 	public ResponseEntity<List<Entry>> getEntryByYear(@PathVariable("year") String year) {
 		List<Entry> result = this.repository.getEntryByYear(year);
 		
-		if (!result.isEmpty()) {
-			return new ResponseEntity<List<Entry>>(result, HttpStatus.OK);
-		} else {
+		if (result.isEmpty()) {
 			return new ResponseEntity<List<Entry>>(HttpStatus.NOT_FOUND);
 		}
+		
+		return new ResponseEntity<List<Entry>>(result, HttpStatus.OK);
 	}
 }
