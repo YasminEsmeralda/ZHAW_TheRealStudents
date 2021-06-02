@@ -23,21 +23,21 @@ public class SessionRestController {
 	public ResponseEntity<List<Session>> getAllSessions() {
 		List<Session> result = this.repository.findAll();
 
-		if (!result.isEmpty()) {
-			return new ResponseEntity<List<Session>>(result, HttpStatus.OK);
-		} else {
+		if (result.isEmpty()) {
 			return new ResponseEntity<List<Session>>(HttpStatus.NOT_FOUND);
 		}
+		
+		return new ResponseEntity<List<Session>>(result, HttpStatus.OK);
 	}
 	
 	@RequestMapping(value = "healthily/sessions/topic={topic}", method = RequestMethod.GET)
 	public ResponseEntity<List<Session>> getSessionByTopic(@PathVariable("topic") String topic) {
 		List<Session> result = this.repository.getSessionByTopic(topic);
 
-		if (!result.isEmpty()) {
-			return new ResponseEntity<List<Session>>(result, HttpStatus.OK);
-		} else {
+		if (result.isEmpty()) {
 			return new ResponseEntity<List<Session>>(HttpStatus.NOT_FOUND);
 		}
+		
+		return new ResponseEntity<List<Session>>(result, HttpStatus.OK);
 	}
 }

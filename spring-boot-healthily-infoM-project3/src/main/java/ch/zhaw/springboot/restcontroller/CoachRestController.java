@@ -15,7 +15,7 @@ import ch.zhaw.springboot.repositories.CoachRepository;
 
 @RestController
 public class CoachRestController {
-	
+
 	@Autowired
 	private CoachRepository repository;
 
@@ -23,17 +23,17 @@ public class CoachRestController {
 	public ResponseEntity<List<Coach>> getCoaches() {
 		List<Coach> result = this.repository.findAll();
 
-		if (!result.isEmpty()) {
-			return new ResponseEntity<List<Coach>>(result, HttpStatus.OK);
-		} else {
+		if (result.isEmpty()) {
 			return new ResponseEntity<List<Coach>>(HttpStatus.NOT_FOUND);
 		}
+		
+		return new ResponseEntity<List<Coach>>(result, HttpStatus.OK);
 	}
-	
+
 	@RequestMapping(value = "healthily/coaches/new", method = RequestMethod.POST)
 	public ResponseEntity<Coach> creatPerson(@RequestBody Coach newCoach) {
 		Coach result = this.repository.save(newCoach);
-		
+
 		return new ResponseEntity<Coach>(result, HttpStatus.OK);
 	}
 }
