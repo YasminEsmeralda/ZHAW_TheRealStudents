@@ -9,17 +9,18 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import ch.zhaw.springboot.entities.Training;
 import ch.zhaw.springboot.repositories.TrainingRepository;
 
 @RestController
 public class TrainingRestController {
-	
+
 	@Autowired
 	private TrainingRepository repository;
 
-	@RequestMapping(value = "healthily/workouts/trainings", method = RequestMethod.GET)
+	@RequestMapping(value = "healthily/trainings", method = RequestMethod.GET)
 	public ResponseEntity<List<Training>> getAllTrainings() {
 		List<Training> result = this.repository.findAll();
 
@@ -29,8 +30,8 @@ public class TrainingRestController {
 			return new ResponseEntity<List<Training>>(HttpStatus.NOT_FOUND);
 		}
 	}
-	
-	@RequestMapping(value = "healthily/workouts/trainings/level={level}", method = RequestMethod.GET)
+
+	@RequestMapping(value = "healthily/trainings/level={level}", method = RequestMethod.GET)
 	public ResponseEntity<List<Training>> getTrainingsByLevel(@PathVariable("level") int level) {
 		List<Training> result = this.repository.getTrainingsByLevel(level);
 
@@ -38,6 +39,21 @@ public class TrainingRestController {
 			return new ResponseEntity<List<Training>>(result, HttpStatus.OK);
 		} else {
 			return new ResponseEntity<List<Training>>(HttpStatus.NOT_FOUND);
+		}
+	}
+
+	@RequestMapping(value = "healthily/trainings/delete={id}", method = RequestMethod.DELETE)
+	public ResponseEntity<?> deleteTrainingById(@PathVariable("id") long id, RedirectAttributes redirAttrs) {
+		boolean exists = repository.existsById(id);
+
+		if (exists) {
+			this.repository.deleteById(id);
+			return new ResponseEntity<String>(HttpStatus.NO_CONTENT);
+		} else {
+			redirAttrs.addFlashAttribute("msginfo", "ctl-todo.delete.msginfo.id-not-exist");
+			redirAttrs.addFlashAttribute("requestedId", id);
+
+			return new ResponseEntity<String>("redirect:/todo/delete" + id, HttpStatus.CONFLICT);
 		}
 	}
 }

@@ -19,7 +19,7 @@ public class EntryRestController {
 	@Autowired
 	private EntryRepository repository;
 
-	@RequestMapping(value = "healthily/diaries/entries", method = RequestMethod.GET)
+	@RequestMapping(value = "healthily/entries", method = RequestMethod.GET)
 	public ResponseEntity<List<Entry>> getAllEntries() {
 		List<Entry> result = this.repository.findAll();
 
@@ -30,7 +30,7 @@ public class EntryRestController {
 		}
 	}
 	
-	@RequestMapping(value = "healthily/diaries/entries/progress={progress}", method = RequestMethod.GET)
+	@RequestMapping(value = "healthily/entries/progress={progress}", method = RequestMethod.GET)
 	public ResponseEntity<List<Entry>> getEntryByProgress(@PathVariable("progress") int progress) {
 		List<Entry> result = this.repository.getEntryByProgress(progress);
 
@@ -41,7 +41,7 @@ public class EntryRestController {
 		}
 	}
 	
-	@RequestMapping(value = "healthily/diaries/entries/year={year}", method = RequestMethod.GET)
+	@RequestMapping(value = "healthily/entries/year={year}", method = RequestMethod.GET)
 	public ResponseEntity<List<Entry>> getEntryByYear(@PathVariable("year") String year) {
 		List<Entry> result = this.repository.getEntryByYear(year);
 		

@@ -3,6 +3,7 @@ package ch.zhaw.springboot.entities;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
@@ -15,14 +16,14 @@ import javax.persistence.Table;
 @Table(name = "liveSession")
 public class LiveSession extends Application{
 	
-    @ManyToMany(fetch = FetchType.LAZY)  
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE) 
     private List<Coach> coaches;
     
     @ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "fk_customer_id")
     private Customer customer;
     
-	@OneToMany(fetch = FetchType.LAZY)
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
 	@JoinColumn(name = "fk_liveSession_id")
 	private List<Session> sessions;
 	

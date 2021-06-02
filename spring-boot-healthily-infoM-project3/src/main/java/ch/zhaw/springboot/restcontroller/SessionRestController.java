@@ -19,7 +19,7 @@ public class SessionRestController {
 	@Autowired
 	private SessionRepository repository;
 
-	@RequestMapping(value = "healthily/liveSessions/sessions", method = RequestMethod.GET)
+	@RequestMapping(value = "healthily/sessions", method = RequestMethod.GET)
 	public ResponseEntity<List<Session>> getAllSessions() {
 		List<Session> result = this.repository.findAll();
 
@@ -30,7 +30,7 @@ public class SessionRestController {
 		}
 	}
 	
-	@RequestMapping(value = "healthily/liveSessions/sessions/topic={topic}", method = RequestMethod.GET)
+	@RequestMapping(value = "healthily/sessions/topic={topic}", method = RequestMethod.GET)
 	public ResponseEntity<List<Session>> getSessionByTopic(@PathVariable("topic") String topic) {
 		List<Session> result = this.repository.getSessionByTopic(topic);
 
