@@ -32,7 +32,7 @@ public class LiveSessionRestController {
 	}
 	
 	@RequestMapping(value = "healthily/liveSessions/delete={id}", method = RequestMethod.DELETE)
-	public ResponseEntity<?> deleteLiveSessionById(@PathVariable("id") long id, RedirectAttributes redirAttrs) {
+	public ResponseEntity<String> deleteLiveSessionById(@PathVariable("id") long id, RedirectAttributes redirAttrs) {
 		boolean exists = repository.existsById(id);
 
 		if (exists) {

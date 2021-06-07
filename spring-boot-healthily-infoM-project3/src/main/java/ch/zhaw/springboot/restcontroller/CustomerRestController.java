@@ -44,7 +44,7 @@ public class CustomerRestController {
 			return new ResponseEntity<Customer>(HttpStatus.NOT_FOUND);
 		}
 
-		return new ResponseEntity<Customer>(result.get(), HttpStatus.NOT_FOUND);
+		return new ResponseEntity<Customer>(result.get(), HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "healthily/customers/customer={id}/workouts/trainings/level={level}", method = RequestMethod.GET)
@@ -54,6 +54,7 @@ public class CustomerRestController {
 		if (result.isEmpty()) {
 			return new ResponseEntity<List<Training>>(HttpStatus.NOT_FOUND);
 		}
+		
 		return new ResponseEntity<List<Training>>(result, HttpStatus.OK);
 	}
 }
