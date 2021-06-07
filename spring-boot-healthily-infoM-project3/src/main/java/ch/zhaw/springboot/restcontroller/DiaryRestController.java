@@ -33,7 +33,7 @@ public class DiaryRestController {
 			return new ResponseEntity<List<Diary>>(HttpStatus.NOT_FOUND);
 		} 
 		
-		return new ResponseEntity<List<Diary>>(HttpStatus.NOT_FOUND);
+		return new ResponseEntity<List<Diary>>(result, HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "healthily/diaries/new", method = RequestMethod.POST)
@@ -42,7 +42,7 @@ public class DiaryRestController {
 		try {
 			Customer customer = this.repositoryCustomer.findById(diaryRequest.customer_id).get();
 			Diary result = this.repository.save(new Diary(diaryRequest.name, diaryRequest.sponsor, diaryRequest.category, customer));
-			return new ResponseEntity<Diary>(result, HttpStatus.NOT_FOUND);
+			return new ResponseEntity<Diary>(result, HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<Diary>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
